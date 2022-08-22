@@ -1,2 +1,24 @@
+<label>Server Name: </label>
+<!-- <input type="text" class="form-control" (input)="onUpdateServerName($event)"/> -->
+<input type="text" class="form-control" [(ngModel)]="serverName"/>
+<button class="btn btn-primary" [disabled] = "!allowAddNewServer" (click)="onServerCreated()">
+    Add Server
+</button>
 <app-server></app-server>
 <app-server></app-server>
+<p [innerText] = "allowAddNewServer"></p>
+<p>{{serverCreationStatus}}</p>
+<br/>
+
+<input type="text" class="form-control" [(ngModel)]="username"/>
+<p>You entered {{username}} as your username</p>
+<button class="btn btn-primary" [disabled]="username===''" (click)="onUsernameReset()">Reset Username</button>
+
+
+
+
+<hr/>
+<p>property binding - the attribute disabled of button is now dynamic by placing in square brackets and will change depend on the variable in quotes. used to change property of html element</p>
+<p>event binding - event in parenthesis, ex: (click) and set value to an executing code</p>
+<p>$event keyword is reserved for event data</p>
+<p>two way data binding - add keyword [(ngModel)] and set it to a variable</p>
