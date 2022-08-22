@@ -13,11 +13,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServersComponent implements OnInit {
   allowAddNewServer : boolean = false;
+  serverCreated : boolean = false;
 
   serverCreationStatus : string = "Server was not created.";
   serverName : string = "";
 
   username : string = "";
+  servers = ["server 1","server 2"];
 
   constructor() { 
     setTimeout(() => {
@@ -29,6 +31,8 @@ export class ServersComponent implements OnInit {
   }
 
   onServerCreated () {
+    this.serverCreated = true;
+    this.servers.push(this.serverName);
     this.serverCreationStatus = "Server " + this.serverName + " was created";
   }
 
@@ -41,4 +45,12 @@ export class ServersComponent implements OnInit {
     this.username = "";
   }
 
+  displayParagraph : boolean = false;
+  clickCount = 0;
+  clickTimes : number[] = [];
+  onAssignment3BtnClick(){
+    this.clickCount++;
+    this.clickTimes.push(this.clickCount);
+    this.displayParagraph = !this.displayParagraph;
+  }
 }
