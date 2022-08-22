@@ -1,4 +1,3 @@
 <div>
-    <h2>{{"Server"}} with ID {{serverId}} is {{getServerStatus()}}</h2>
-    <p>string interpolation - between double curly bracket must be a string, a string variable or variable that can be converted to string, a method call that return a string, and a ternary operation. used to print a text</p>
+    <h2 [ngStyle]="{backgroundColor: setColor()}" [ngClass] = "{online: serverStatus==='Online'}">{{"Server"}} with ID {{serverId}} is {{getServerStatus()}}</h2>
 </div>
