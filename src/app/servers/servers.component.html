@@ -4,21 +4,43 @@
 <button class="btn btn-primary" [disabled] = "!allowAddNewServer" (click)="onServerCreated()">
     Add Server
 </button>
-<app-server></app-server>
-<app-server></app-server>
-<p [innerText] = "allowAddNewServer"></p>
-<p>{{serverCreationStatus}}</p>
-<br/>
+<app-server *ngFor="let server of servers"></app-server>
+<!-- <p [innerText] = "allowAddNewServer"></p>
+<p>{{serverCreationStatus}}</p> -->
+<!-- <p *ngIf="serverCreated; else noServer">Server was created, server name is {{serverName}}</p>
+<ng-template #noServer><p>No server was created!</p></ng-template> -->
 
+<p *ngIf="serverCreated">Server was created, server name is {{serverName}}</p>
+
+<br/>
+<hr>
+<p>ASSIGNMENT 2</p>
 <input type="text" class="form-control" [(ngModel)]="username"/>
 <p>You entered {{username}} as your username</p>
 <button class="btn btn-primary" [disabled]="username===''" (click)="onUsernameReset()">Reset Username</button>
 
+<br>
+<hr>
+<p>ASSIGNMENT 3</p>
+<button class="btn btn-primary" (click)="onAssignment3BtnClick()">
+    Display Details
+</button>
+<p *ngIf="displayParagraph">This text is displayed because Display Details button has clicked</p>
+<p *ngFor="let time of clickTimes" [ngStyle]="{backgroundColor: time>=5?'blue':'white'}" [ngClass]="{whiteColor: time >= 5}">
+    You have clicked {{time}} times.
+</p>
+<p *ngFor="let time of clickTimes; let i=index" [ngStyle]="{backgroundColor: i>=4?'blue':'white'}" [ngClass]="{whiteColor: i >= 4}">
+    The index of {{time}} click time is {{i}}.
+</p>
 
 
-
+<br>
 <hr/>
+<p>string interpolation - between double curly bracket must be a string, a string variable or variable that can be converted to string, a method call that return a string, and a ternary operation. used to print a text</p>
 <p>property binding - the attribute disabled of button is now dynamic by placing in square brackets and will change depend on the variable in quotes. used to change property of html element</p>
 <p>event binding - event in parenthesis, ex: (click) and set value to an executing code</p>
 <p>$event keyword is reserved for event data</p>
 <p>two way data binding - add keyword [(ngModel)] and set it to a variable</p>
+<p>structural directive that creates new element so *[directive] - *ngIf. attribute directive that updates element so [directive] - [ngStyle] and [ngClass]</p>
+<p>[ngStyle] is set to an object whose key is css property (backgroundColor) and value is value for this prop (can use conditional statement to change style), [ngClass] is set to an object whose key is class name and value is a condition to apply this class</p>
+<p>*ngIf whose value is a condition, *ngFor whose value is let item of [array from ts][; let i = index]  </p>
